@@ -15,6 +15,10 @@ public class Pedido {
         this.total = 0.0;
     }
 
+    public int getNumeroPedido(){
+        return numeroPedido;
+    }
+
     public void adicionarPrato(Prato prato) {
         listaDePratos.add(prato);
         total += prato.getPreco();
