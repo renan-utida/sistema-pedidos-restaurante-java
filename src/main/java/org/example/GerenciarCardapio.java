@@ -14,11 +14,27 @@ public class GerenciarCardapio {
     public void adicionarPrato() {
         System.out.print("Nome do prato: ");
         String nome = scanner.nextLine();
+        if (nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio.");
+        }
+
         System.out.print("Preço do prato: ");
-        double preco = scanner.nextDouble();
-        scanner.nextLine();
+        String precoStr = scanner.nextLine().replace(",", ".");
+        double preco;
+        try {
+            preco = Double.parseDouble(precoStr);
+            if (preco <= 0) {
+                throw new IllegalArgumentException("Preço deve ser maior que zero.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Preço inválido. Use números decimais com ponto (ex: 14.99).");
+        }
+
         System.out.print("Descrição do prato: ");
         String descricao = scanner.nextLine();
+        if (descricao.trim().isEmpty()) {
+            throw new IllegalArgumentException("Descrição não pode ser vazia.");
+        }
 
         Prato prato = new Prato(nome, preco, descricao);
         restaurante.adicionarPrato(prato);

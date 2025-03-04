@@ -15,7 +15,7 @@ public class CarregarDados {
                 if (linha.startsWith("Prato:")) {
                     String[] partes = linha.substring(7).split(", ");
                     String nome = partes[0].split("=")[1];
-                    double preco = Double.parseDouble(partes[1].split("=")[1]);
+                    double preco = Double.parseDouble(partes[1].split("=")[1].replace(",", "."));
                     String descricao = partes[2].split("=")[1].replace("}", "");
                     cardapio.add(new Prato(nome, preco, descricao));
                 } else if (linha.startsWith("Pedido:")) {
@@ -25,13 +25,14 @@ public class CarregarDados {
                     String data = partes[2].split("=")[1];
                     Pedido pedido = new Pedido(numeroPedido, cliente);
 
-                    // Carregar pratos do pedido
                     while ((linha = reader.readLine()) != null && linha.startsWith("  Prato:")) {
                         String[] pratoPartes = linha.substring(9).split(", ");
                         String nomePrato = pratoPartes[0].split("=")[1];
+                        int quantidade = Integer.parseInt(pratoPartes[1].split("=")[1]);
+                        double valor = Double.parseDouble(pratoPartes[2].split("=")[1].replace("}", "").replace(",", "."));
                         Prato prato = cardapio.stream().filter(p -> p.getNome().equals(nomePrato)).findFirst().orElse(null);
                         if (prato != null) {
-                            pedido.adicionarPrato(prato);
+                            pedido.adicionarItem(prato, quantidade);
                         }
                     }
                     pedidos.add(pedido);
