@@ -15,7 +15,7 @@ public class CarregarDados {
                 if (linha.startsWith("Prato:")) {
                     String[] partes = linha.substring(7).split(", ");
                     String nome = partes[0].split("=")[1];
-                    double preco = Double.parseDouble(partes[1].split("=")[1].replace(",", "."));
+                    double preco = Double.parseDouble(partes[1].split("=")[1].replace(",", ".")); // Substitui vírgula por ponto
                     String descricao = partes[2].split("=")[1].replace("}", "");
                     cardapio.add(new Prato(nome, preco, descricao));
                 } else if (linha.startsWith("Pedido:")) {
@@ -29,7 +29,7 @@ public class CarregarDados {
                         String[] pratoPartes = linha.substring(9).split(", ");
                         String nomePrato = pratoPartes[0].split("=")[1];
                         int quantidade = Integer.parseInt(pratoPartes[1].split("=")[1]);
-                        double valor = Double.parseDouble(pratoPartes[2].split("=")[1].replace("}", "").replace(",", "."));
+                        double valor = Double.parseDouble(pratoPartes[2].split("=")[1].replace("}", "").replace(",", ".")); // Substitui vírgula por ponto
                         Prato prato = cardapio.stream().filter(p -> p.getNome().equals(nomePrato)).findFirst().orElse(null);
                         if (prato != null) {
                             pedido.adicionarItem(prato, quantidade);

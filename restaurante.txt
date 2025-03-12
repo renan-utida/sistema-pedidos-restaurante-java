@@ -1,3 +1,4 @@
-Prato: {nome=Macarrao, preco=24,90, descricao=Bolonhesa}
-Prato: {nome=Lasanha, preco=30,00, descricao=Presunto e Queijo}
-Prato: {nome=Nhoque, preco=35,00, descricao=Batata Doce}
+Prato: {nome=Macarrao, preco=15.99, descricao=Bolonhesa}
+Prato: {nome=Pão de Queijo, preco=4.99, descricao=Salgado}
+Prato: {nome=Salada, preco=5.66, descricao=Caesar}
+Prato: {nome=Lasanha, preco=20.00, descricao=Presunto e Queijo}

@@ -16,6 +16,8 @@ public class GerenciarCardapio {
         String nome = scanner.nextLine();
         if (nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome não pode ser vazio.");
+        } else if (!nome.matches("[\\p{L}\\s]+")) {
+            throw new IllegalArgumentException("Nome deve conter apenas letras e espaços.");
         }
 
         System.out.print("Preço do prato: ");
@@ -42,8 +44,17 @@ public class GerenciarCardapio {
     }
 
     public void removerPrato() {
+        if (restaurante.getCardapio().isEmpty()) {
+            System.out.println("Nenhum prato cadastrado no cardápio até o momento.");
+            return;
+        }
+
         System.out.print("Nome do prato a remover: ");
         String nome = scanner.nextLine();
+        if (!nome.matches("[\\p{L}\\s]+")) {
+            System.out.println("Nome deve conter apenas letras e espaços.");
+            return;
+        }
 
         Prato prato = restaurante.getCardapio().stream()
                 .filter(p -> p.getNome().equals(nome))

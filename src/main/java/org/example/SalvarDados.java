@@ -1,8 +1,8 @@
 package org.example;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class SalvarDados {
@@ -12,7 +12,7 @@ public class SalvarDados {
     public void salvar(List<Prato> cardapio, List<Pedido> pedidos) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO, false))) {
             for (Prato prato : cardapio) {
-                writer.write("Prato: {nome=" + prato.getNome() + ", preço=" + df.format(prato.getPreco()).replace(",", ".") + ", descrição=" + prato.getDescricao() + "}");
+                writer.write("Prato: {nome=" + prato.getNome() + ", preco=" + df.format(prato.getPreco()).replace(",", ".") + ", descricao=" + prato.getDescricao() + "}");
                 writer.newLine();
             }
             for (Pedido pedido : pedidos) {

@@ -69,6 +69,8 @@ public class Principal {
             } catch (InputMismatchException e) {
                 System.out.println("Erro: Digite um número válido.");
                 scanner.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Erro: " + e.getMessage());
             } catch (Exception e) {
                 System.out.println("Erro inesperado: " + e.getMessage());
                 scanner.nextLine();
