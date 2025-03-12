@@ -2,3 +2,4 @@ Prato: {nome=Macarrao, preco=15.99, descricao=Bolonhesa}
 Prato: {nome=Pão de Queijo, preco=4.99, descricao=Salgado}
 Prato: {nome=Salada, preco=5.66, descricao=Caesar}
 Prato: {nome=Lasanha, preco=20.00, descricao=Presunto e Queijo}
+Pedido: {numeroPedido=1, cliente=Lucas, data=12/03/2025 17:07:30}

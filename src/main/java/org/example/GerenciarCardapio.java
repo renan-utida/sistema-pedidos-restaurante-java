@@ -29,7 +29,7 @@ public class GerenciarCardapio {
                 throw new IllegalArgumentException("Preço deve ser maior que zero.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Preço inválido. Use números decimais com ponto (ex: 14.99).");
+            throw new IllegalArgumentException("Preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 14.99).");
         }
 
         System.out.print("Descrição do prato: ");
