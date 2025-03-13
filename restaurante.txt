@@ -1,5 +1,6 @@
-Prato: {nome=Macarrao, preco=15.99, descricao=Bolonhesa}
-Prato: {nome=Pão de Queijo, preco=4.99, descricao=Salgado}
-Prato: {nome=Salada, preco=5.66, descricao=Caesar}
-Prato: {nome=Lasanha, preco=20.00, descricao=Presunto e Queijo}
-Pedido: {numeroPedido=1, cliente=Lucas, data=12/03/2025 17:07:30}
+Prato: {nome=Lasanha, preco=20.00, descricao=Bolonhesa}
+Prato: {nome=Macarrão, preco=24.90, descricao=Ao sugo}
+Pedido: {numeroPedido=1, cliente=Renan, data=13/03/2025 13:13:17}
+  Prato: {nome=Lasanha, quantidade=2, valor=40.00}
+  Prato: {nome=Macarrão, quantidade=1, valor=24.90}
+  Total: {valor=64,90}

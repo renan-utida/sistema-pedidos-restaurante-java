@@ -24,7 +24,7 @@ public class SalvarDados {
                     writer.write("  Prato: {nome=" + item.getPrato().getNome() + ", quantidade=" + item.getQuantidade() + ", valor=" + df.format(item.getSubtotal()).replace(",", ".") + "}");
                     writer.newLine();
                 }
-                writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()).replace(",", ".") + "}");
+                writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()) + "}");
                 writer.newLine();
             }
         } catch (IOException e) {

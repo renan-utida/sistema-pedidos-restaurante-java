@@ -21,7 +21,7 @@ public class ItemPedido {
     }
 
     public double getSubtotal() {
-        return Double.parseDouble(df.format(prato.getPreco() * quantidade));
+        return prato.getPreco() * quantidade;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class GerenciarPedidos {
 
     public void criarPedido() {
         try{
-            int numeroPedido = LeituraDeDados.lerInteiroPositivo("Número do pedido: ");
+            int numeroPedido = LeituraDeDados.lerInteiroPositivo("\nNúmero do pedido: ");
 
             boolean pedidoExistente = restaurante.getPedidos().stream()
                     .anyMatch(p -> p.getNumeroPedido() == numeroPedido);
@@ -58,24 +58,24 @@ public class GerenciarPedidos {
                     }
                 } else if (opcao == 2) {
                     if (pedido.getItens().isEmpty()) {
-                        System.out.println("Erro: Adicione pelo menos um prato para finalizar o pedido.\n");
+                        System.out.println("Erro: Adicione pelo menos um prato para finalizar o pedido.");
                     } else {
                         restaurante.criarPedido(pedido);
-                        System.out.println("Pedido finalizado com sucesso!\n");
+                        System.out.println("Pedido finalizado com sucesso!");
                         break;
                     }
                 } else if (opcao == 3) {
-                    System.out.println("Pedido cancelado.\n");
+                    System.out.println("Pedido cancelado.");
                     return;
                 } else {
-                    System.out.println("Opção inválida! Digite 1, 2 ou 3!\n");
+                    System.out.println("Opção inválida! Digite 1, 2 ou 3!");
                 }
             }
         } catch (InputMismatchException e) {
-            System.out.println("Erro: Digite um número válido.\n");
+            System.out.println("Erro: Digite um número válido.");
             scanner.nextLine();
         } catch (Exception e) {
-            System.out.println("Erro inesperado: " + e.getMessage() + "\n");
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
     }
 

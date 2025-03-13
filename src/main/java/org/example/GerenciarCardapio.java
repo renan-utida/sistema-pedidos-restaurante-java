@@ -20,17 +20,7 @@ public class GerenciarCardapio {
             throw new IllegalArgumentException("Nome deve conter apenas letras e espaços.");
         }
 
-        System.out.print("Preço do prato: ");
-        String precoStr = scanner.nextLine().replace(",", ".");
-        double preco;
-        try {
-            preco = Double.parseDouble(precoStr);
-            if (preco <= 0) {
-                throw new IllegalArgumentException("Preço deve ser maior que zero.");
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 14.99).");
-        }
+        double preco = LeituraDeDados.lerPrecoPrato("Preço do prato (use ponto como separador decimal, ex: 4.99): ");
 
         System.out.print("Descrição do prato: ");
         String descricao = scanner.nextLine();

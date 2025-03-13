@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class LeituraDeDados {
     private static Scanner scanner = new Scanner(System.in);
@@ -27,6 +27,24 @@ public class LeituraDeDados {
                 System.out.println("Erro: Digite um número válido.");
             } finally {
                 scanner.nextLine();
+            }
+        }
+    }
+
+    public static double lerPrecoPrato(String mensagem) {
+        while (true) {
+            try {
+                System.out.print(mensagem);
+                double valor = scanner.nextDouble();
+                scanner.nextLine(); // Limpar o buffer
+                if (valor <= 0) {
+                    System.out.println("Erro: O valor deve ser maior que zero.");
+                    continue;
+                }
+                return valor;
+            } catch (InputMismatchException e) {
+                System.out.println("Erro: Formato de preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 4.99).\n");
+                scanner.nextLine(); // Limpar o buffer
             }
         }
     }
