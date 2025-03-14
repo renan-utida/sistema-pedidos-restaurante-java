@@ -94,10 +94,10 @@ public class Principal {
 
                 switch (opcao) {
                     case 1 -> gerenciarPedidos.criarPedido();
-                    case 2 -> gerenciarPedidos.visualizarPedido();
-                    case 3 -> gerenciarPedidos.listarPedidos();
-                    case 4 -> gerenciarPedidos.removerPedido();
-                    case 5 -> gerenciarPedidos.limparPedidos();
+                    case 2 -> gerenciarPedidos.visualizarAlgumPedido();
+                    case 3 -> gerenciarPedidos.listarTodosPedidos();
+                    case 4 -> gerenciarPedidos.removerAlgumPedido();
+                    case 5 -> gerenciarPedidos.limparTodosPedidos();
                     case 6 -> { return; }
                     default -> System.out.println("Opção inválida! Digite um número de 1 a 6.");
                 }
