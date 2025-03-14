@@ -82,7 +82,7 @@ public class Principal {
         while (true) {
             try {
                 System.out.println("\n1 - Criar Pedido");
-                System.out.println("2 - Visualizar Pedido");
+                System.out.println("2 - Visualizar Pedido Específico");
                 System.out.println("3 - Listar Pedidos");
                 System.out.println("4 - Remover Pedido");
                 System.out.println("5 - Limpar Pedidos");

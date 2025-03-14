@@ -29,6 +29,10 @@ public class Restaurante {
         salvarDados.salvar(cardapio, pedidos);
     }
 
+    public void salvarDados() {
+        salvarDados.salvar(cardapio, pedidos);
+    }
+
     public List<Prato> getCardapio() {
         return cardapio;
     }

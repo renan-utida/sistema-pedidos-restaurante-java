@@ -31,57 +31,18 @@ public class LeituraDeDados {
         }
     }
 
-    public static double lerPrecoPrato(String mensagem) {
-        while (true) {
-            try {
-                System.out.print(mensagem);
-                double valor = scanner.nextDouble();
-                scanner.nextLine();
-                if (valor <= 0) {
-                    System.out.println("Erro: O valor deve ser maior que zero.");
-                    continue;
-                }
-                return valor;
-            } catch (InputMismatchException e) {
-                System.out.println("Erro: Formato de preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 4.99).\n");
-                scanner.nextLine();
-            }
-        }
-    }
-
-    public static int lerInteiroPositivo(String mensagem) {
-        while (true) {
-            try {
-                System.out.print(mensagem);
-                String input = scanner.nextLine().trim();
-                if (input.isEmpty()) {
-                    System.out.println("Erro: O número do pedido não pode estar vazio.\n");
-                    continue;
-                }
-                int numero = Integer.parseInt(input);
-                if (numero <= 0) {
-                    System.out.println("Erro: O número do pedido deve ser maior que zero.\n");
-                    continue;
-                }
-                return numero;
-            } catch (NumberFormatException e) {
-                System.out.println("Erro: Digite um número válido.\n");
-            }
-        }
-    }
-
-    public static String lerNomeCliente(String mensagem) {
-        while (true) {
+    public static double lerPrecoPrato(String mensagem) throws IllegalArgumentException {
+        try {
             System.out.print(mensagem);
-            String nome = scanner.nextLine().trim();
-            if (nome.isEmpty()) {
-                System.out.println("Erro: O nome do cliente não pode estar vazio.\n");
-                continue;
-            } else if (!nome.matches("[\\p{L}\\s]+")) {
-                System.out.println("Erro: O nome deve conter apenas letras e espaços.\n");
-                continue;
+            double valor = scanner.nextDouble();
+            scanner.nextLine();
+            if (valor <= 0) {
+                throw new IllegalArgumentException("O valor deve ser maior que zero.");
             }
-            return nome;
+            return valor;
+        } catch (InputMismatchException e) {
+            scanner.nextLine();
+            throw new IllegalArgumentException("Formato de preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 4.99).");
         }
     }
 }

@@ -13,7 +13,9 @@ public class GerenciarPedidos {
 
     public void criarPedido() {
         try{
-            int numeroPedido = LeituraDeDados.lerInteiroPositivo("\nNúmero do pedido: ");
+            System.out.print("\nNúmero do pedido: ");
+            int numeroPedido = scanner.nextInt();
+            scanner.nextLine();
 
             boolean pedidoExistente = restaurante.getPedidos().stream()
                     .anyMatch(p -> p.getNumeroPedido() == numeroPedido);
@@ -21,9 +23,20 @@ public class GerenciarPedidos {
             if (pedidoExistente) {
                 System.out.println("Erro: Já existe um pedido com esse número.");
                 return;
+            } else if (numeroPedido <= 0){
+                System.out.println("Erro: O número do pedido deve ser maior que zero!");
+                return;
             }
 
-            String cliente = LeituraDeDados.lerNomeCliente("Nome do cliente: ");
+            System.out.print("Nome do cliente: ");
+            String cliente = scanner.nextLine().trim();
+            if (!cliente.matches("[\\p{L}\\s]+")) {
+                System.out.println("Erro: Nome do cliente inválido.");
+                return; // Retorna ao menu de gerenciamento de pedidos
+            } else if (cliente.isEmpty()) {
+                System.out.println("Erro: O nome do cliente não pode estar vazio.\\n\"");
+                return;
+            }
 
             Pedido pedido = new Pedido(numeroPedido, cliente);
 
@@ -48,11 +61,23 @@ public class GerenciarPedidos {
                             .orElse(null);
 
                     if (prato != null) {
-                        System.out.print("Quantidade: ");
-                        int quantidade = scanner.nextInt();
-                        scanner.nextLine();
-                        pedido.adicionarItem(prato, quantidade);
-                        System.out.println("Prato adicionado ao pedido.");
+                        while (true) {
+                            try {
+                                System.out.print("Quantidade: ");
+                                int quantidade = scanner.nextInt();
+                                scanner.nextLine();
+                                if (quantidade <= 0) {
+                                    System.out.println("Erro: A quantidade deve ser maior que zero.");
+                                    continue;
+                                }
+                                pedido.adicionarItem(prato, quantidade);
+                                System.out.println("Prato adicionado ao pedido.");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Erro: Digite um número válido.");
+                                scanner.nextLine();
+                            }
+                        }
                     } else {
                         System.out.println("Prato não encontrado no cardápio.");
                     }
@@ -126,6 +151,7 @@ public class GerenciarPedidos {
 
         if (pedido != null) {
             restaurante.getPedidos().remove(pedido);
+            restaurante.salvarDados();
             System.out.println("Pedido removido com sucesso!");
         } else {
             System.out.println("Pedido não encontrado.");
@@ -134,6 +160,7 @@ public class GerenciarPedidos {
 
     public void limparPedidos() {
         restaurante.getPedidos().clear();
+        restaurante.salvarDados();
         System.out.println("Todos os pedidos foram removidos.");
     }
 }

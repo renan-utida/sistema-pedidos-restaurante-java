@@ -12,25 +12,31 @@ public class GerenciarCardapio {
     }
 
     public void adicionarPrato() {
-        System.out.print("Nome do prato: ");
-        String nome = scanner.nextLine();
-        if (nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nome não pode ser vazio.");
-        } else if (!nome.matches("[\\p{L}\\s]+")) {
-            throw new IllegalArgumentException("Nome deve conter apenas letras e espaços.");
+        try {
+            System.out.print("Nome do prato: ");
+            String nome = scanner.nextLine();
+            if (nome.trim().isEmpty()) {
+                throw new IllegalArgumentException("Nome não pode ser vazio.");
+            } else if (!nome.matches("[\\p{L}\\s]+")) {
+                throw new IllegalArgumentException("Nome deve conter apenas letras e espaços.");
+            }
+
+            double preco = LeituraDeDados.lerPrecoPrato("Preço do prato (use ponto como separador decimal, ex: 4.99): ");
+
+            System.out.print("Descrição do prato: ");
+            String descricao = scanner.nextLine();
+            if (descricao.trim().isEmpty()) {
+                throw new IllegalArgumentException("Descrição não pode ser vazia.");
+            }
+
+            Prato prato = new Prato(nome, preco, descricao);
+            restaurante.adicionarPrato(prato);
+            System.out.println("Prato adicionado com sucesso!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
-
-        double preco = LeituraDeDados.lerPrecoPrato("Preço do prato (use ponto como separador decimal, ex: 4.99): ");
-
-        System.out.print("Descrição do prato: ");
-        String descricao = scanner.nextLine();
-        if (descricao.trim().isEmpty()) {
-            throw new IllegalArgumentException("Descrição não pode ser vazia.");
-        }
-
-        Prato prato = new Prato(nome, preco, descricao);
-        restaurante.adicionarPrato(prato);
-        System.out.println("Prato adicionado com sucesso!");
     }
 
     public void removerPrato() {
