@@ -158,25 +158,93 @@ public class GerenciarPedidos {
     //--------------------------------------------------------------------------------------------
     // Métodos de Principal.java
 
-    public void visualizarAlgumPedido() {
-        if (restaurante.getPedidos().isEmpty()) {
-            System.out.println("Nenhum pedido registrado.");
-            return;
+    public void visualizarPedidoEspecifico() {
+        try {
+            if (restaurante.getPedidos().isEmpty()) {
+                System.out.println("Nenhum pedido registrado.");
+                return;
+            }
+
+            System.out.println("\nNúmero dos pedidos cadastrados:");
+            restaurante.getPedidos().forEach(p -> System.out.println("-> " + p.getNumeroPedido()));
+
+            System.out.print("\nDigite o número do pedido que deseja visualizar: ");
+            int numeroPedido = scanner.nextInt();
+            scanner.nextLine();
+
+            Pedido pedido = restaurante.getPedidos().stream()
+                    .filter(p -> p.getNumeroPedido() == numeroPedido)
+                    .findFirst()
+                    .orElse(null);
+
+            if (pedido != null) {
+                System.out.println("\nDetalhes do pedido:");
+                System.out.println(pedido);
+            } else {
+                System.out.println("Pedido não encontrado.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Digite um número válido.");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
+    }
 
-        System.out.print("Número do pedido: ");
-        int numeroPedido = scanner.nextInt();
-        scanner.nextLine();
+    public void editarPedidoEspecifico() {
+        try {
+            if (restaurante.getPedidos().isEmpty()) {
+                System.out.println("Nenhum pedido registrado.");
+                return;
+            }
 
-        Pedido pedido = restaurante.getPedidos().stream()
-                .filter(p -> p.getNumeroPedido() == numeroPedido)
-                .findFirst()
-                .orElse(null);
+            System.out.println("\nNúmero dos pedidos cadastrados:");
+            restaurante.getPedidos().forEach(p -> System.out.println("-> " + p.getNumeroPedido()));
 
-        if (pedido != null) {
-            System.out.println(pedido);
-        } else {
-            System.out.println("Pedido não encontrado.");
+            System.out.print("\nDigite o número do pedido que deseja editar: ");
+            int numeroPedido = scanner.nextInt();
+            scanner.nextLine();
+
+            Pedido pedido = restaurante.getPedidos().stream()
+                    .filter(p -> p.getNumeroPedido() == numeroPedido)
+                    .findFirst()
+                    .orElse(null);
+
+            if (pedido == null) {
+                System.out.println("Pedido não encontrado.");
+                return;
+            }
+
+            while (true) {
+                System.out.println("\n1 - Adicionar Prato");
+                System.out.println("2 - Remover Prato");
+                System.out.println("3 - Listar Pedido");
+                System.out.println("4 - Finalizar Edição");
+                System.out.println("5 - Cancelar Edição");
+                System.out.print("Escolha: ");
+                int opcao = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcao) {
+                    case 1 -> adicionarPratoAoPedido(pedido);
+                    case 2 -> removerPratoDoPedido(pedido);
+                    case 3 -> listarPedido(pedido);
+                    case 4 -> {
+                        System.out.println("Edição finalizada.");
+                        return;
+                    }
+                    case 5 -> {
+                        System.out.println("Edição cancelada.");
+                        return;
+                    }
+                    default -> System.out.println("Opção inválida! Digite um número de 1 a 5.");
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Digite um número válido.");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
     }
 
@@ -185,6 +253,7 @@ public class GerenciarPedidos {
             System.out.println("Nenhum pedido registrado.");
             return;
         }
+        System.out.println("\nLista de todos os pedidos:");
         restaurante.getPedidos().forEach(System.out::println);
     }
 

@@ -83,10 +83,11 @@ public class Principal {
             try {
                 System.out.println("\n1 - Criar Pedido");
                 System.out.println("2 - Visualizar Pedido Específico");
-                System.out.println("3 - Listar Pedidos");
-                System.out.println("4 - Remover Pedido");
-                System.out.println("5 - Limpar Pedidos");
-                System.out.println("6 - Voltar");
+                System.out.println("3 - Editar Pedido Específico");
+                System.out.println("4 - Listar Pedidos");
+                System.out.println("5 - Remover Pedido");
+                System.out.println("6 - Limpar Pedidos");
+                System.out.println("7 - Voltar");
                 System.out.print("Escolha: ");
 
                 int opcao = scanner.nextInt();
@@ -94,12 +95,13 @@ public class Principal {
 
                 switch (opcao) {
                     case 1 -> gerenciarPedidos.criarPedido();
-                    case 2 -> gerenciarPedidos.visualizarAlgumPedido();
-                    case 3 -> gerenciarPedidos.listarTodosPedidos();
-                    case 4 -> gerenciarPedidos.removerAlgumPedido();
-                    case 5 -> gerenciarPedidos.limparTodosPedidos();
-                    case 6 -> { return; }
-                    default -> System.out.println("Opção inválida! Digite um número de 1 a 6.");
+                    case 2 -> gerenciarPedidos.visualizarPedidoEspecifico();
+                    case 3 -> gerenciarPedidos.editarPedidoEspecifico();
+                    case 4 -> gerenciarPedidos.listarTodosPedidos();
+                    case 5 -> gerenciarPedidos.removerAlgumPedido();
+                    case 6 -> gerenciarPedidos.limparTodosPedidos();
+                    case 7 -> { return; }
+                    default -> System.out.println("Opção inválida! Digite um número de 1 a 7.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Erro: Digite um número válido.");
