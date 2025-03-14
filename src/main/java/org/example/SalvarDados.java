@@ -1,13 +1,12 @@
 package org.example;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.*;
 
 public class SalvarDados {
     private static final String ARQUIVO = "restaurante.txt";
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public void salvar(List<Prato> cardapio, List<Pedido> pedidos) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO, false))) {
@@ -24,7 +23,7 @@ public class SalvarDados {
                     writer.write("  Prato: {nome=" + item.getPrato().getNome() + ", quantidade=" + item.getQuantidade() + ", valor=" + df.format(item.getSubtotal()).replace(",", ".") + "}");
                     writer.newLine();
                 }
-                writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()) + "}");
+                writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()).replace(",", ".") + "}");
                 writer.newLine();
             }
         } catch (IOException e) {

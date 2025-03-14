@@ -9,7 +9,7 @@ public class Principal {
     private static GerenciarPedidos gerenciarPedidos;
 
     public Principal() {
-        this.scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in).useLocale(Locale.US);
         this.gerenciarCardapio = new GerenciarCardapio(restaurante, scanner);
         this.gerenciarPedidos = new GerenciarPedidos(restaurante, scanner);
     }

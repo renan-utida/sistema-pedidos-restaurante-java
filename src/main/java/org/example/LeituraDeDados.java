@@ -3,7 +3,7 @@ package org.example;
 import java.util.*;
 
 public class LeituraDeDados {
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     public static int lerInteiro(String mensagem) {
         while (true) {
@@ -36,7 +36,7 @@ public class LeituraDeDados {
             try {
                 System.out.print(mensagem);
                 double valor = scanner.nextDouble();
-                scanner.nextLine(); // Limpar o buffer
+                scanner.nextLine();
                 if (valor <= 0) {
                     System.out.println("Erro: O valor deve ser maior que zero.");
                     continue;
@@ -44,7 +44,7 @@ public class LeituraDeDados {
                 return valor;
             } catch (InputMismatchException e) {
                 System.out.println("Erro: Formato de preço inválido. Use números positivos inteiros ou decimais com ponto (ex: 4.99).\n");
-                scanner.nextLine(); // Limpar o buffer
+                scanner.nextLine();
             }
         }
     }
