@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class GerenciarCardapio {
     private Restaurante restaurante;
@@ -45,24 +45,19 @@ public class GerenciarCardapio {
             return;
         }
 
-        System.out.print("Nome do prato a remover: ");
-        String nome = scanner.nextLine();
-        if (!nome.matches("[\\p{L}\\s]+")) {
-            System.out.println("Nome deve conter apenas letras e espaços.");
+        listarCardapioNumerado();
+        System.out.print("Número do prato a remover: ");
+        int numeroPrato = scanner.nextInt();
+        scanner.nextLine();
+
+        if (numeroPrato < 1 || numeroPrato > restaurante.getCardapio().size()) {
+            System.out.println("Número de prato inválido.");
             return;
         }
 
-        Prato prato = restaurante.getCardapio().stream()
-                .filter(p -> p.getNome().equals(nome))
-                .findFirst()
-                .orElse(null);
-
-        if (prato != null) {
-            restaurante.removerPrato(prato);
-            System.out.println("Prato removido com sucesso!");
-        } else {
-            System.out.println("Prato não encontrado.");
-        }
+        Prato prato = restaurante.getCardapio().get(numeroPrato - 1);
+        restaurante.removerPrato(prato);
+        System.out.println("Prato removido com sucesso!");
     }
 
     public void listarCardapio() {
@@ -70,6 +65,14 @@ public class GerenciarCardapio {
             System.out.println("Nenhum prato cadastrado no cardápio.");
             return;
         }
-        restaurante.getCardapio().forEach(System.out::println);
+        listarCardapioNumerado();
+    }
+
+    private void listarCardapioNumerado() {
+        List<Prato> cardapio = restaurante.getCardapio();
+        for (int i = 0; i < cardapio.size(); i++) {
+            Prato prato = cardapio.get(i);
+            System.out.println((i + 1) + " -> " + prato.getNome() + " (" + prato.getDescricao() + ") - Valor: " + prato.getPreco());
+        }
     }
 }

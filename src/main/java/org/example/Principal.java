@@ -82,11 +82,11 @@ public class Principal {
         while (true) {
             try {
                 System.out.println("\n1 - Criar Pedido");
-                System.out.println("2 - Visualizar Pedido Específico");
-                System.out.println("3 - Editar Pedido Específico");
-                System.out.println("4 - Listar Pedidos");
-                System.out.println("5 - Remover Pedido");
-                System.out.println("6 - Limpar Pedidos");
+                System.out.println("2 - Listar Todos Pedidos");
+                System.out.println("3 - Visualizar Pedido Específico");
+                System.out.println("4 - Editar Pedido Específico");
+                System.out.println("5 - Remover Pedido Específico");
+                System.out.println("6 - Limpar Todos os Pedidos");
                 System.out.println("7 - Voltar");
                 System.out.print("Escolha: ");
 
@@ -95,10 +95,10 @@ public class Principal {
 
                 switch (opcao) {
                     case 1 -> gerenciarPedidos.criarPedido();
-                    case 2 -> gerenciarPedidos.visualizarPedidoEspecifico();
-                    case 3 -> gerenciarPedidos.editarPedidoEspecifico();
-                    case 4 -> gerenciarPedidos.listarTodosPedidos();
-                    case 5 -> gerenciarPedidos.removerAlgumPedido();
+                    case 2 -> gerenciarPedidos.listarTodosPedidos();
+                    case 3 -> gerenciarPedidos.visualizarPedidoEspecifico();
+                    case 4 -> gerenciarPedidos.editarPedidoEspecifico();
+                    case 5 -> gerenciarPedidos.removerPedidoEspecifico();
                     case 6 -> gerenciarPedidos.limparTodosPedidos();
                     case 7 -> { return; }
                     default -> System.out.println("Opção inválida! Digite um número de 1 a 7.");

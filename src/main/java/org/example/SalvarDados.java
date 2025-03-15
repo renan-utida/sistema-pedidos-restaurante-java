@@ -14,6 +14,8 @@ public class SalvarDados {
                 writer.write("Prato: {nome=" + prato.getNome() + ", preco=" + df.format(prato.getPreco()).replace(",", ".") + ", descricao=" + prato.getDescricao() + "}");
                 writer.newLine();
             }
+            writer.write("------------------------------------------------------------------------------------------------");
+            writer.newLine();
             for (Pedido pedido : pedidos) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 String data = sdf.format(new Date());
@@ -24,6 +26,7 @@ public class SalvarDados {
                     writer.newLine();
                 }
                 writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()).replace(",", ".") + "}");
+                writer.newLine();
                 writer.newLine();
             }
         } catch (IOException e) {
