@@ -156,15 +156,6 @@ public class MenuPedido {
         }
     }
 
-//    private void listarPedido(Pedido pedido) {
-//        if (pedido.getItens().isEmpty()) {
-//            System.out.println("Nenhum prato adicionado ao pedido.");
-//        } else {
-//            System.out.println("\nDetalhes do pedido:");
-//            exibirPedidoFormatado(pedido);
-//        }
-//    }
-
     private boolean finalizarPedido() {
         if (pedido.getItens().isEmpty()) {
             System.out.println("Erro: Adicione pelo menos um prato para finalizar o pedido.");
@@ -175,15 +166,4 @@ public class MenuPedido {
             return true;
         }
     }
-
-//    private boolean finalizarPedido(Pedido pedido) {
-//        if (pedido.getItens().isEmpty()) {
-//            System.out.println("Erro: Adicione pelo menos um prato para finalizar o pedido.");
-//            return false;
-//        } else {
-//            restaurante.criarPedido(pedido);
-//            System.out.println("\nPedido finalizado com sucesso! Valor total a ser pago: R$ " + df.format(pedido.calcularTotal()));
-//            return true;
-//        }
-//    }
 }
