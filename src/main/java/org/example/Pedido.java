@@ -58,7 +58,7 @@ public class Pedido {
     }
 
     public double calcularTotal() {
-        return total;
+        return Double.parseDouble(df.format(total));
     }
 
     @Override

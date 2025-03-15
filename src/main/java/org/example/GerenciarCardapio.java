@@ -1,10 +1,13 @@
 package org.example;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.*;
 
 public class GerenciarCardapio {
     private Restaurante restaurante;
     private Scanner scanner;
+    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public GerenciarCardapio(Restaurante restaurante, Scanner scanner) {
         this.restaurante = restaurante;
@@ -72,7 +75,7 @@ public class GerenciarCardapio {
         List<Prato> cardapio = restaurante.getCardapio();
         for (int i = 0; i < cardapio.size(); i++) {
             Prato prato = cardapio.get(i);
-            System.out.println((i + 1) + " -> " + prato.getNome() + " (" + prato.getDescricao() + ") - Valor: " + prato.getPreco());
+            System.out.println((i + 1) + " -> " + prato.getNome() + " (" + prato.getDescricao() + ") - Valor: " + df.format(prato.getPreco()));
         }
     }
 }
