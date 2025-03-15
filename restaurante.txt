@@ -1,38 +1,14 @@
-Prato: {nome=Lasanha, preco=19.90, descricao=Bolonhesa}
-Prato: {nome=Macarrão, preco=24.90, descricao=Molho Branco}
+Prato: {nome=Lasanha, preco=29.90, descricao=Bolonhesa}
+Prato: {nome=Macarrão, preco=22.90, descricao=Molho Branco}
 Prato: {nome=Arroz, preco=6.90, descricao=Branco - 300gr}
+Prato: {nome=Bife a Parmegiana, preco=30.00, descricao=Acompanha Arroz e Fritas}
 Prato: {nome=Picanha, preco=39.90, descricao=Acompanha Arroz}
-Prato: {nome=Lasanha, preco=24.90, descricao=Presunto e Queijo}
+Prato: {nome=Alcatra, preco=26.90, descricao=Acompanha Arroz}
 ------------------------------------------------------------------------------------------------
-Pedido: {numeroPedido=1, cliente=Renan, data=15/03/2025 01:46:09}
-  Prato: {nome=Lasanha, quantidade=2, valor=39.80}
-  Prato: {nome=Arroz, quantidade=3, valor=20.70}
-  Prato: {nome=Picanha, quantidade=3, valor=119.70}
-  Total: {valor=180.20}
-
-Pedido: {numeroPedido=2, cliente=Wilson, data=15/03/2025 01:46:09}
-  Prato: {nome=Lasanha, quantidade=3, valor=59.70}
-  Prato: {nome=Picanha, quantidade=1, valor=39.90}
-  Total: {valor=99.60}
-
-Pedido: {numeroPedido=3, cliente=Borges, data=15/03/2025 01:46:09}
-  Prato: {nome=Lasanha, quantidade=2, valor=39.80}
-  Total: {valor=39.80}
-
-Pedido: {numeroPedido=4, cliente=Joseph, data=15/03/2025 01:46:09}
-  Prato: {nome=Arroz, quantidade=2, valor=13.80}
-  Prato: {nome=Picanha, quantidade=1, valor=39.90}
-  Total: {valor=53.70}
-
-Pedido: {numeroPedido=5, cliente=Miguel, data=15/03/2025 01:46:09}
-  Prato: {nome=Macarrão, quantidade=2, valor=49.80}
-  Prato: {nome=Picanha, quantidade=1, valor=39.90}
-  Prato: {nome=Lasanha, quantidade=4, valor=79.60}
-  Total: {valor=169.30}
-
-Pedido: {numeroPedido=6, cliente=Julio, data=15/03/2025 01:46:09}
-  Prato: {nome=Lasanha, quantidade=2, valor=39.80}
-  Prato: {nome=Arroz, quantidade=5, valor=34.50}
-  Prato: {nome=Macarrão, quantidade=1, valor=24.90}
-  Total: {valor=99.20}
+Pedido: {numeroPedido=2, cliente=Felipe, data=15/03/2025 13:11:13}
+  Prato: {nome=Arroz, quantidade=1, valor=6.90}
+  Prato: {nome=Alcatra, quantidade=2, valor=53.80}
+  Prato: {nome=Picanha, quantidade=2, valor=79.80}
+  Prato: {nome=Macarrão, quantidade=5, valor=114.50}
+  Total: {valor=255.00}
 

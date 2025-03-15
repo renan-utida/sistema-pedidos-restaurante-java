@@ -1,15 +1,12 @@
 package org.example;
 
 import java.util.*;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 
 public class Pedido {
     private int numeroPedido;
     private String cliente;
     private List<ItemPedido> itens;
     private double total;
-    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public Pedido(int numeroPedido, String cliente) {
         this.numeroPedido = numeroPedido;
@@ -58,7 +55,7 @@ public class Pedido {
     }
 
     public double calcularTotal() {
-        return Double.parseDouble(df.format(total));
+        return Double.parseDouble(Utilidades.formatarValor(total));
     }
 
     @Override
@@ -71,7 +68,7 @@ public class Pedido {
         for (ItemPedido item : itens) {
             sb.append("\n  ").append(item);
         }
-        sb.append("\n], total=").append(df.format(total).replace(",", ".")).append('}');
+        sb.append("\n], total=").append(Utilidades.formatarValor(total).replace(",", ".")).append('}');
         return sb.toString();
     }
 }

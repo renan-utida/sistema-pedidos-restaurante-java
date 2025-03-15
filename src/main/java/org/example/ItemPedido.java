@@ -1,13 +1,8 @@
 package org.example;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-
 public class ItemPedido {
     private Prato prato;
     private int quantidade;
-    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public ItemPedido(Prato prato, int quantidade) {
         this.prato = prato;
@@ -31,7 +26,7 @@ public class ItemPedido {
         return "ItemPedido{" +
                 "prato=" + prato.getNome() +
                 ", quantidade=" + quantidade +
-                ", subtotal=" + df.format(getSubtotal()).replace(",", ".") +
+                ", subtotal=" + Utilidades.formatarValor(getSubtotal()).replace(",", ".") +
                 '}';
     }
 }

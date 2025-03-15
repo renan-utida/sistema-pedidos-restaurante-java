@@ -6,12 +6,11 @@ import java.util.*;
 
 public class SalvarDados {
     private static final String ARQUIVO = "restaurante.txt";
-    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public void salvar(List<Prato> cardapio, List<Pedido> pedidos) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO, false))) {
             for (Prato prato : cardapio) {
-                writer.write("Prato: {nome=" + prato.getNome() + ", preco=" + df.format(prato.getPreco()).replace(",", ".") + ", descricao=" + prato.getDescricao() + "}");
+                writer.write("Prato: {nome=" + prato.getNome() + ", preco=" + Utilidades.formatarValor(prato.getPreco()).replace(",", ".") + ", descricao=" + prato.getDescricao() + "}");
                 writer.newLine();
             }
             writer.write("------------------------------------------------------------------------------------------------");
@@ -22,10 +21,10 @@ public class SalvarDados {
                 writer.write("Pedido: {numeroPedido=" + pedido.getNumeroPedido() + ", cliente=" + pedido.getCliente() + ", data=" + data + "}");
                 writer.newLine();
                 for (ItemPedido item : pedido.getItens()) {
-                    writer.write("  Prato: {nome=" + item.getPrato().getNome() + ", quantidade=" + item.getQuantidade() + ", valor=" + df.format(item.getSubtotal()).replace(",", ".") + "}");
+                    writer.write("  Prato: {nome=" + item.getPrato().getNome() + ", quantidade=" + item.getQuantidade() + ", valor=" + Utilidades.formatarValor(item.getSubtotal()).replace(",", ".") + "}");
                     writer.newLine();
                 }
-                writer.write("  Total: {valor=" + df.format(pedido.calcularTotal()).replace(",", ".") + "}");
+                writer.write("  Total: {valor=" + Utilidades.formatarValor(pedido.calcularTotal()).replace(",", ".") + "}");
                 writer.newLine();
                 writer.newLine();
             }

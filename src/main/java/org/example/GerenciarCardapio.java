@@ -1,13 +1,10 @@
 package org.example;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.*;
 
 public class GerenciarCardapio {
     private Restaurante restaurante;
     private Scanner scanner;
-    private static final DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
     public GerenciarCardapio(Restaurante restaurante, Scanner scanner) {
         this.restaurante = restaurante;
@@ -48,7 +45,7 @@ public class GerenciarCardapio {
             return;
         }
 
-        listarCardapioNumerado();
+        Utilidades.exibirListaPratos(restaurante.getCardapio());
         System.out.print("Número do prato a remover: ");
         int numeroPrato = scanner.nextInt();
         scanner.nextLine();
@@ -68,14 +65,6 @@ public class GerenciarCardapio {
             System.out.println("Nenhum prato cadastrado no cardápio.");
             return;
         }
-        listarCardapioNumerado();
-    }
-
-    private void listarCardapioNumerado() {
-        List<Prato> cardapio = restaurante.getCardapio();
-        for (int i = 0; i < cardapio.size(); i++) {
-            Prato prato = cardapio.get(i);
-            System.out.println((i + 1) + " -> " + prato.getNome() + " (" + prato.getDescricao() + ") - Valor: " + df.format(prato.getPreco()));
-        }
+        Utilidades.exibirListaPratos(restaurante.getCardapio());
     }
 }
