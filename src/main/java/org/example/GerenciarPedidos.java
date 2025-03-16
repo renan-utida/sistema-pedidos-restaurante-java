@@ -14,7 +14,7 @@ public class GerenciarPedidos {
     public void criarPedido() {
         try{
             Utilidades.mostrarNumerosPedidosCadastrados(restaurante.getPedidos());
-            System.out.print("\nNúmero do pedido: ");
+            System.out.print("\nInsira um novo número de pedido: ");
             int numeroPedido = scanner.nextInt();
             scanner.nextLine();
 
